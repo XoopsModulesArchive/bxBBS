@@ -1,0 +1,66 @@
+<div align="center">
+<b style='color:#008080; font-size:24px;'><{$bbs.title}></b>
+<hr width="90%">
+	[<a href="<{$smarty.const.XOOPS_URL}>/index.php" target="_top"><{$smarty.const._MD_BXBBS_LANG_GO_TOP}></a>]
+	[<a href="./viewbbs.php?bbs_id=<{$bbs.bbs_id}>"><{$smarty.const._MD_BXBBS_LANG_BBS_TOP}></a>]
+	[<a href="./howto.php"><{$smarty.const._MD_BXBBS_LANG_HOWTO}></a>]
+	[<a href="<{$smarty.const.XOOPS_URL}>/search.php"><{$smarty.const._MD_BXBBS_LANG_SEARCH}></a>]
+<hr width="90%"></div>
+<blockquote>
+<{include file="db:bxbbs_form.html"}>
+</blockquote>
+
+<hr noshade>
+
+<{foreach name=parent item=i from=$messages}>
+<{include file="db:bxbbs_item.html" item=$i}>
+<{/foreach}>
+
+<{if $navi.maxpage>1}>
+	<div align="left">
+	<blockquote>
+
+	<table style="width: auto;"><tr>
+	<{if $navi.prev}>
+	<td valign=top><form action="viewbbs.php" method="get">
+	<input type=hidden name="bbs_id" value="<{$bbs.bbs_id}>">
+	<input type=hidden name="start" value="<{$navi.prev.extra}>">
+	<input type=submit value='Prev' style="background-color: #F7FAFD; color:#000000; font-family:Verdana,Helvetica,Arial;"></td></form>
+	<{/if}>
+	<{if $navi.next}>
+	<td valign=top><form action="viewbbs.php" method="get">
+	<input type=hidden name="bbs_id" value="<{$bbs.bbs_id}>">
+	<input type=hidden name="start" value="<{$navi.next.extra}>">
+	<input type=submit value='Next' style="background-color: #F7FAFD; color:#000000; font-family:Verdana,Helvetica,Arial;"></td></form>
+	<{/if}>
+
+	<td width=7></td><td valign=top>
+	<table border=0 style="width: auto;"><tr>
+	<td style="font-family:Verdana,Helvetica,Arial;" align=center valign=top>|</td>
+	<{foreach item=i from=$navi.page}>
+		<{if $navi.current_page==$i.number}>
+			<td align=center valign=top sytle="font-family:Verdana,Helvetica,Arial;" width=15><b style='color:red'><{$i.number}></b></td><td sytle="font-family:Verdana,Helvetica,Arial;" align=center valign=top>|</td>
+		<{else}>
+			<td align=center valign=top sytle="font-family:Verdana,Helvetica,Arial;" width=15><a href="viewbbs.php?<{$i.extra}>"><{$i.number}></a></td><td sytle="font-family:Verdana,Helvetica,Arial;" align=center valign=top>|</td>
+		<{/if}>
+	<{/foreach}>
+</tr></table>
+</td>
+</tr></table>
+</blockquote>
+</div>
+<{/if}>
+<div align="center">
+<form action="./revi.php" method="POST">
+<select name=mode style="background-color: #F7FAFD; color:#000000;">
+<option value="edit"><{$smarty.const._MD_BXBBS_LANG_REVICE}></option>
+<option value="delete"><{$smarty.const._MD_BXBBS_LANG_DELETE}></option>
+</select>
+<span sytle="font-family:Verdana,Helvetica,Arial;">
+NO:<input type=text name="serial" size=3 style="f">
+PASS:<input type="password" name="passwd" size=6 maxlength=8 style="background-color: #F7FAFD; color:#000000;">
+</span>
+<input type="hidden" name="bbs_id" value="<{$bbs.bbs_id}>">
+<input type=submit value="<{$smarty.const._MD_BXBBS_LANG_SEND}>" style="background-color: #F7FAFD; color:#000000;"></form>
+<p>
+</div>

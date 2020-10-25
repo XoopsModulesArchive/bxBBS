@@ -1,0 +1,38 @@
+<table class="outer" cellspacing="1">
+
+  <{if $block.fullmode === true}>
+  <tr>
+    <th><{$smarty.const._MB_BXBBS_LANG_BBS}></th>
+    <th><{$smarty.const._MB_BXBBS_LANG_TITLE}></th>
+    <th align='right'><{$smarty.const._MB_BXBBS_LANG_LASTPOST}></th>
+  </tr>
+
+  <{foreach item=m from=$block.messages}>
+  <tr class="<{cycle values="even,odd"}>">
+    <td><a href="<{$xoops_url}>/modules/bxBBS/viewbbs.php?bbs_id=<{$m.bbs_id}>"><{$m.bbs_title}></a></td>
+    <td><a href="<{$xoops_url}>/modules/bxBBS/viewbbs.php?bbs_id=<{$m.bbs_id}>&amp;start=<{$m.start}>#<{$m.id}>"><{$m.title}></td>
+    <td align="right"><{$m.inputdate|date_format:"%m/%d %H:%M"}><br><{$m.name}></td>
+  </tr>
+  <{/foreach}>
+
+  <{else}>
+
+  <tr>
+    <td class="head"><{$smarty.const._MB_BXBBS_LANG_TITLE}></td>
+    <td class="head" align="right"><{$smarty.const._MB_BXBBS_LANG_LASTPOST}></td>
+  </tr>
+
+  <{foreach item=m from=$block.messages}>
+  <tr class="<{cycle values="even,odd"}>">
+    <td><a href="<{$xoops_url}>/modules/bxBBS/viewbbs.php?bbs_id=<{$m.bbs_id}>&amp;start=<{$m.page}>#<{$m.id}>"><{$m.title}></td>
+    <td align="right"><{$m.inputdate|date_format:"%m/%d %H:%M"}><br><{$m.name}></td>
+  </tr>
+  <{/foreach}>
+
+  <{/if}>
+
+</table>
+
+<div style="text-align:right; padding: 5px;">
+<a href="<{$xoops_url}>/modules/bxBBS/"><{$smarty.const._MB_BXBBS_LANG_GO_BBS}></a>
+</div>

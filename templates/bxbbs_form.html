@@ -1,0 +1,51 @@
+<form method="POST" action="regist.php">
+	<input type=hidden name="id" value="<{$post.id}>">
+	<input type=hidden name="parent" value="<{$post.parent}>">
+	<input type=hidden name="bbs_id" value="<{$bbs.bbs_id}>">
+
+	<table border=0 cellspacing=0>
+		<tr>
+		  <td nowrap><b><{$smarty.const._MD_BXBBS_LANG_NAME}></b></td>
+		  <td>
+		      <{if $post.name}>
+                   <input type=text name="name" size=28 value="<{$post.name}>" style="background-color: #F7FAFD; color:#000000;">
+              <{else}>
+                 <{if $bbsUser.uid}>
+                   <{if $bbsUser.name}>
+                       <input type=text name="name" size=28 value="<{$bbsUser.name}>" style="background-color: #F7FAFD; color:#000000;">
+                   <{else}>
+                       <input type=text name="name" size=28 value="<{$bbsUser.uname}>" style="background-color: #F7FAFD; color:#000000;">
+                   <{/if}>
+                 <{else}>
+                   <input type=text name="name" size=28 value="<{$post.name}>" style="background-color: #F7FAFD; color:#000000;">
+                 <{/if}>
+              <{/if}>
+		  </td>
+		</tr>
+		<tr>
+		  <td nowrap><b><{$smarty.const._MD_BXBBS_LANG_EMAIL}></b></td>
+		  <td><input type=text name="email" size=28 value="<{$post.email}>"  style="background-color: #F7FAFD; color:#000000;"></td>
+		</tr>
+	<tr>
+	  <td nowrap><b><{$smarty.const._MD_BXBBS_LANG_TITLE}></b></td>
+	  <td nowrap>
+	    <input type=text name="title" size=36 value="<{$post.title}>"  style="background-color: #F7FAFD; color:#000000;">
+	<input type=submit value="<{$smarty.const._MD_BXBBS_LANG_SUBMIT}>"><input type=reset value="<{$smarty.const._MD_BXBBS_LANG_RESET}>">
+	  </td>
+	</tr>
+	<tr>
+	  <td colspan=2>
+	    <b><{$smarty.const._MD_BXBBS_LANG_MESSAGE}></b><br>
+	    <textarea cols=56 rows=7 name="message" wrap="soft"  style="background-color: #F7FAFD; color:#000000;"><{$post.message}></textarea>
+	  </td>
+	</tr>
+	<tr>
+	  <td nowrap><b><{$smarty.const._MD_BXBBS_LANG_URL}></b></td>
+	  <td>
+          <input type=text size=55 name="url" value="<{$post.url}>"  style="background-color: #F7FAFD; color:#000000;">
+	  </td>
+	</tr>
+	<tr><td nowrap><b><{$smarty.const._MD_BXBBS_LANG_PASSWD}></b></td><td><input type=password name=passwd size=8 maxlength=8 value="<{$post.passwd}>"   style="background-color: #F7FAFD; color:#000000;">
+	<{$smarty.const._MD_BXBBS_LANG_PASSWD_DESC}></td></tr>
+	</table>
+</form>

@@ -1,0 +1,20 @@
+<a name="<{$item.id}>"></a>
+
+[<b><{$item.serial}></b>] 
+<font color="#DD0000"><b><{$item.title}></b></font>
+ <{$smarty.const._MD_BXBBS_POSTER}>:<b>
+<{if $item.uid}>
+  <a href="<{$smarty.const.XOOPS_URL}>/userinfo.php?uid=<{$item.uid}>"><{$item.name}></a></b>
+<{else}>
+  <a href="<{$item.mail}>"><{$item.name}></a></b>
+<{/if}>
+  <{$smarty.const._MD_BXBBS_POSTDATE}>:<{$item.inputdate|date_format:"%Y/%m/%d(%a) %H:%M"}>
+  [<a href="viewbbs.php?bbs_id=<{$bbs.bbs_id}>&amp;id=<{$item.id}>"><{$smarty.const._MD_BXBBS_LANG_RESPONSE}></a>]<br><br>
+
+<{$item.message}>
+
+<{if $item.url!='http://'}>
+	<P><a href="<{$item.url}>" target="_blank"><{$item.url}></a><br><br>
+<{/if}>
+
+<hr align='center' noshade>
